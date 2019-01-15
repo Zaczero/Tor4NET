@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28407.52
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tor4NET", "Tor4NET\Tor4NET.csproj", "{93DC626F-2D7B-46ED-8C3D-08D61212E877}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tor4NET.Sandbox", "Tor4NET.Sandbox\Tor4NET.Sandbox.csproj", "{E51F2050-A7CB-4616-9E06-1F0948262153}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{93DC626F-2D7B-46ED-8C3D-08D61212E877}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{93DC626F-2D7B-46ED-8C3D-08D61212E877}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{93DC626F-2D7B-46ED-8C3D-08D61212E877}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{93DC626F-2D7B-46ED-8C3D-08D61212E877}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E51F2050-A7CB-4616-9E06-1F0948262153}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E51F2050-A7CB-4616-9E06-1F0948262153}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E51F2050-A7CB-4616-9E06-1F0948262153}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E51F2050-A7CB-4616-9E06-1F0948262153}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0CFB1655-B1FA-41A3-9F0C-D514E98259A3}
+	EndGlobalSection
+EndGlobal
