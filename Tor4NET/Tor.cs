@@ -99,6 +99,7 @@ namespace Tor4NET
                     if (torProcess.MainModule.FileName == _torExecutable)
                     {
                         torProcess.Kill();
+                        torProcess.WaitForExit();
                     }
                 }
                 catch
