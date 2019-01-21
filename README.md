@@ -1,5 +1,9 @@
 # ![](https://i.imgur.com/iANxGPi.png)
 
+![](https://img.shields.io/github/release/Zaczero/Tor4NET.svg)
+![](https://img.shields.io/nuget/v/Tor4NET.svg)
+![](https://img.shields.io/github/license/Zaczero/Tor4NET.svg)
+
 An all-in-one solution to fulfill your .NET dark web needs.
 
 Learn more about Tor [here](https://www.torproject.org/).  
