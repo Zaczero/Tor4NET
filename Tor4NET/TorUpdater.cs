@@ -58,7 +58,7 @@ namespace Tor4NET
                 release = await GetLatestRelease();
             }
 
-            var url = $"{BaseUrl}/{release}/";
+            var url = $"{BaseUrl}{release}/";
             var html = await _httpClient.GetStringAsync(url);
             var match = _versionRegex.Match(html);
 
@@ -77,7 +77,7 @@ namespace Tor4NET
                 version = await GetLatestVersion(release);
             }
 
-            var downloadUrl = $"{BaseUrl}/{release}/tor-win{(_x86 ? "32" : "64")}-{version}.zip";
+            var downloadUrl = $"{BaseUrl}{release}/tor-win{(_x86 ? "32" : "64")}-{version}.zip";
 
             return await _httpClient.GetStreamAsync(downloadUrl);
         }
