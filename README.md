@@ -45,6 +45,13 @@ var html = wc.DownloadString("http://facebookcorewwwi.onion");
 client.Dispose();
 ```
 
+## Donate ❤️
+
+* BTC: `1NjW3K26ZPZeveW4st4sC249MfyW2w5ZP8`
+* ETH: `0x56b4ED755b7bDD75A954e168EB96f4501F75342d`
+* BCH: `qrx5sz2wzdrjn5an2euvqgf677gu7trxyc9jf3ldkn`
+* XLM: `GAQVHFBRGXHLZHSDLR4GNG7O4TJ2WQUC7IFZYGAET4VDOYYOPNJWSGIB`
+
 ## License
 ### Tor4NET MIT license
 
