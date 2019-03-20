@@ -14,17 +14,17 @@ namespace Tor4NET
     {
         private const int SocksPort = 9450;
         private const int ControlPort = 9451;
-        private const string ControlPassword = "Tor4NET_zkGnHjviJ5dJH77KaaxTA5kf";
         
-        private readonly Regex _versionRegex;
-        private readonly TorUpdater _torUpdater;
+        private readonly Regex versionRegex;
+        private readonly TorUpdater torUpdater;
 
-        private readonly string _torDirectory;
-        private readonly string _torExecutable;
+        private readonly string torDirectory;
+        private readonly string torExecutable;
+        private readonly string controlPassword = "Tor4NET_zkGnHjviJ5dJH77KaaxTA5kf";
 
-        public Tor(string torDirectory, bool x86 = true)
+        public Tor(string torDirectory, bool x86 = true, string torControlPassword = null)
         {
-            _versionRegex = new Regex(@"Tor version (?<version>\S+)", RegexOptions.Compiled);
+            versionRegex = new Regex(@"Tor version (?<version>\S+)", RegexOptions.Compiled);
 
             var httpHandler = new HttpClientHandler
             {
@@ -39,22 +39,27 @@ namespace Tor4NET
             httpClient.DefaultRequestHeaders.ConnectionClose = false;
             httpClient.DefaultRequestHeaders.Connection.Add("Keep-Alive");
 
-            _torUpdater = new TorUpdater(httpClient, x86);
+            torUpdater = new TorUpdater(httpClient, x86);
 
-            _torDirectory = torDirectory;
-            _torExecutable = $@"{_torDirectory}\Tor\tor.exe";
+            this.torDirectory = torDirectory;
+            torExecutable = $@"{this.torDirectory}\Tor\tor.exe";
+
+            if (!string.IsNullOrEmpty(torControlPassword))
+            {
+                controlPassword = torControlPassword;
+            }
         }
 
         private async Task<string> GetCurrentVersion()
         {
-            if (!File.Exists(_torExecutable))
+            if (!File.Exists(torExecutable))
             {
                 return string.Empty;
             }
 
             var psi = new ProcessStartInfo
             {
-                FileName = _torExecutable,
+                FileName = torExecutable,
                 Arguments = "--version",
                 CreateNoWindow = true,
                 UseShellExecute = false,
@@ -63,7 +68,7 @@ namespace Tor4NET
 
             var process = Process.Start(psi);
             var output = await process.StandardOutput.ReadToEndAsync();
-            var match = _versionRegex.Match(output);
+            var match = versionRegex.Match(output);
 
             return match.Groups["version"].Value;
         }
@@ -76,7 +81,7 @@ namespace Tor4NET
             {
                 try
                 {
-                    if (torProcess.MainModule.FileName == _torExecutable)
+                    if (torProcess.MainModule.FileName == torExecutable)
                     {
                         return true;
                     }
@@ -96,7 +101,7 @@ namespace Tor4NET
             {
                 try
                 {
-                    if (torProcess.MainModule.FileName == _torExecutable)
+                    if (torProcess.MainModule.FileName == torExecutable)
                     {
                         torProcess.Kill();
                         torProcess.WaitForExit();
@@ -115,27 +120,27 @@ namespace Tor4NET
                 return true;
             }
 
-            var latestVersion = await _torUpdater.GetLatestVersion();
+            var latestVersion = await torUpdater.GetLatestVersion();
             return currentVersion != latestVersion;
         }
 
         public async Task InstallUpdates()
         {
-            if (!Directory.Exists(_torDirectory))
+            if (!Directory.Exists(torDirectory))
             {
-                Directory.CreateDirectory(_torDirectory);
+                Directory.CreateDirectory(torDirectory);
             }
             else
             {
                 KillTorProcesses();
             }
             
-            var updateZip = await _torUpdater.DownloadUpdate();
+            var updateZip = await torUpdater.DownloadUpdate();
             var archive = new ZipArchive(updateZip);
 
             foreach (var entry in archive.Entries)
             {
-                var path = $@"{_torDirectory}\{entry.FullName}";
+                var path = $@"{torDirectory}\{entry.FullName}";
                 if (entry.CompressedLength == 0)
                 {
                     // directory
@@ -164,14 +169,14 @@ namespace Tor4NET
             
             if (!killExistingTor && IsTorRunning())
             {
-                var createParams = new ClientRemoteParams("127.0.0.1", ControlPort, ControlPassword);
+                var createParams = new ClientRemoteParams("127.0.0.1", ControlPort, controlPassword);
                 client = Client.CreateForRemote(createParams);
             }
             else
             {
                 KillTorProcesses();
 
-                var createParams = new ClientCreateParams(_torExecutable, ControlPort, ControlPassword);
+                var createParams = new ClientCreateParams(torExecutable, ControlPort, controlPassword);
                 client = Client.Create(createParams);
             }
 
