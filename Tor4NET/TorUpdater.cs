@@ -18,7 +18,7 @@ namespace Tor4NET
 
         public TorUpdater(HttpClient httpClient, bool x86 = true)
         {
-            _releaseRegex = new Regex(@"alt=""\[DIR\]""> <a href=""(?<release>\d+(?:\.\S+)*?)\/"">(?:\d+(?:\.\S+)*?)\/<\/a>\s*(?<year>\d{4})-(?<month>\d[0-2])-(?<day>[0-3]\d)", RegexOptions.Compiled);
+            _releaseRegex = new Regex(@"alt=""\[DIR\]""> <a href=""(?<release>\d+(?:\.\S+)*?)\/"">(?:\d+(?:\.\S+)*?)\/<\/a>\s*(?<year>\d{4})-(?<month>\d{2})-(?<day>\d{2})", RegexOptions.Compiled);
             _versionRegex = new Regex($@"tor-win{(x86 ? "32" : "64")}-(?<version>\S+?)\.zip", RegexOptions.Compiled);
             _httpClient = httpClient;
 
