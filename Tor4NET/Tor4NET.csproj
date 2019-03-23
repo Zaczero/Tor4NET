@@ -7,11 +7,12 @@
     <Authors>Zaczero (Kamil Monicz)</Authors>
     <PackageProjectUrl>https://github.com/Zaczero/Tor4NET</PackageProjectUrl>
     <PackageLicenseUrl>https://github.com/Zaczero/Tor4NET/blob/master/LICENSE</PackageLicenseUrl>
-    <Version>1.1.2</Version>
+    <Version>1.1.3</Version>
     <Copyright>Copyright (c) Zaczero (Kamil Monicz) 2019</Copyright>
     <PackageIconUrl>https://i.imgur.com/8MkHe6o.png</PackageIconUrl>
     <PackageTags>tor, proxy, socks5, http, https, onion, dark, web, hidden, onion service,</PackageTags>
     <Description>An all-in-one solution to fulfill your .NET dark web needs.</Description>
+    <AssemblyVersion>1.1.3.0</AssemblyVersion>
   </PropertyGroup>
 
   <ItemGroup>
