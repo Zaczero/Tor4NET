@@ -9,11 +9,11 @@ An all-in-one solution to fulfill your .NET dark web needs.
 Learn more about Tor [here](https://www.torproject.org/).  
 This library is built over [Tor.NET](https://www.codeproject.com/Articles/1072864/%2fArticles%2f1072864%2fTor-NET-A-managed-Tor-network-library) *- thanks to Chris Copeland*.
 
-## Download
+## 🔗 Download
 
 * https://github.com/Zaczero/Tor4NET/releases/latest
 
-## Getting started
+## 🏁 Getting started
 
 ```cs
 // directory where the tor files are going to be stored
@@ -45,14 +45,11 @@ var html = wc.DownloadString("http://facebookcorewwwi.onion");
 client.Dispose();
 ```
 
-## Donate ❤️
+## ☕ Support me
 
-* BTC: `1NjW3K26ZPZeveW4st4sC249MfyW2w5ZP8`
-* ETH: `0x56b4ED755b7bDD75A954e168EB96f4501F75342d`
-* BCH: `qrx5sz2wzdrjn5an2euvqgf677gu7trxyc9jf3ldkn`
-* XLM: `GAQVHFBRGXHLZHSDLR4GNG7O4TJ2WQUC7IFZYGAET4VDOYYOPNJWSGIB`
+* Bitcoin: `35n1y9iHePKsVTobs4FJEkbfnBg2NtVbJW`
 
-## License
+## 📎 Licenses
 ### Tor4NET MIT license
 
 MIT License
