@@ -1,4 +1,4 @@
-# ![](https://i.imgur.com/iANxGPi.png)
+# ![](https://github.com/Zaczero/Tor4NET/blob/master/icons/Tor4NET_small.png)
 
 ![](https://img.shields.io/github/release/Zaczero/Tor4NET.svg)
 ![](https://img.shields.io/nuget/v/Tor4NET.svg)
@@ -18,7 +18,7 @@ This library is built over [Tor.NET](https://www.codeproject.com/Articles/107286
 ```cs
 // directory where the tor files are going to be stored
 // if directory doesn't exist, it will create one
-var torDirectory = "C:\\Users\\xyz\\Documents\\tor";
+var torDirectory = "C:\\Users\\CHANGE_ME\\Documents\\tor";
 
 // support 64 bit tor on 64 bit os (optional)
 var is32Bit = !Environment.Is64BitOperatingSystem;
@@ -32,6 +32,8 @@ if (tor.CheckForUpdates().Result)
 var client = tor.InitializeClient();
 
 // wait for tor to fully initialize
+Thread.Sleep(5 * 1000);
+
 while (!client.Proxy.IsRunning)
     Thread.Sleep(100);
 
