@@ -31,21 +31,13 @@ namespace Tor4NET
             var matches = _releaseRegex.Matches(html);
 
             var version = string.Empty;
-            var date = DateTime.UtcNow;
 
             foreach (Match match in matches)
             {
                 var matchVersion = match.Groups["release"].Value;
-                var matchDate = new DateTime(
-                    int.Parse(match.Groups["year"].Value),
-                    int.Parse(match.Groups["month"].Value),
-                    int.Parse(match.Groups["day"].Value));
 
-                if (version == string.Empty || matchDate > date)
-                {
-                    version = matchVersion;
-                    date = matchDate;
-                }
+                if (version == string.Empty || string.CompareOrdinal(matchVersion, version) > 0)
+	                version = matchVersion;
             }
 
             return version;

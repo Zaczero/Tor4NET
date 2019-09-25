@@ -25,6 +25,8 @@ namespace Tor4NET.Sandbox
             var client = tor.InitializeClient();
 
             // wait for tor to fully initialize
+			Thread.Sleep(5 * 1000);
+
             while (!client.Proxy.IsRunning)
                 Thread.Sleep(100);
 
