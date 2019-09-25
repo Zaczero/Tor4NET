@@ -23,7 +23,7 @@ var torDirectory = "C:\\Users\\CHANGE_ME\\Documents\\tor";
 // support 64 bit tor on 64 bit os (optional)
 var is32Bit = !Environment.Is64BitOperatingSystem;
 
-var tor = new Tor(torDirectory, is32Bit);
+var tor = new Tor4NET.Tor(torDirectory, is32Bit);
 
 // install updates if available
 if (tor.CheckForUpdates().Result)
