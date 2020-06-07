@@ -3,23 +3,32 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
-    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <Authors>Zaczero (Kamil Monicz)</Authors>
     <PackageProjectUrl>https://github.com/Zaczero/Tor4NET</PackageProjectUrl>
-    <PackageLicenseUrl>https://github.com/Zaczero/Tor4NET/blob/master/LICENSE</PackageLicenseUrl>
-    <Version>1.1.4</Version>
-    <Copyright>Copyright (c) Zaczero (Kamil Monicz) 2019</Copyright>
-    <PackageIconUrl>https://raw.githubusercontent.com/Zaczero/Tor4NET/master/icons/Tor4NET_small.png</PackageIconUrl>
+    <PackageLicenseUrl></PackageLicenseUrl>
+    <Version>1.2</Version>
+    <Copyright>Copyright © Kamil Monicz 2020</Copyright>
+    <PackageIconUrl></PackageIconUrl>
     <PackageTags>tor, proxy, socks5, http, https, onion, dark, web, hidden, onion service,</PackageTags>
-    <Description>An all-in-one solution to fulfill your .NET dark web needs.</Description>
-    <AssemblyVersion>1.1.4.0</AssemblyVersion>
-    <RepositoryUrl></RepositoryUrl>
+    <Description>An all-in-one solution to fulfill your .NET dark web needs</Description>
+    <AssemblyVersion>1.2.0.0</AssemblyVersion>
+    <RepositoryUrl>https://github.com/Zaczero/Tor4NET</RepositoryUrl>
     <RepositoryType />
-    <FileVersion>1.1.4.0</FileVersion>
+    <FileVersion>1.2.0.0</FileVersion>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageIcon>Tor4NET_small.png</PackageIcon>
   </PropertyGroup>
 
   <ItemGroup>
     <Folder Include="Tor\Core\Foundation\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\icons\Tor4NET_small.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
   </ItemGroup>
 
 </Project>
