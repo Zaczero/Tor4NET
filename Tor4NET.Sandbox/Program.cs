@@ -1,43 +1,40 @@
 ﻿using System;
 using System.IO;
 using System.Net;
-using System.Threading;
 
 namespace Tor4NET.Sandbox
 {
-    class Program
+    public static class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
-            // directory where the tor files are going to be stored
-            // if directory doesn't exist, it will create one
-            var torDirectory = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "tor");
+            // Directory where Tor files are going to be stored.
+            // If the directory does not exist, it will create one.
+            var torDirectory = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Tor4NET");
 
-            // support 64 bit tor on 64 bit os (optional)
+            // Use 64-bit Tor on 64-bit system (optional).
             var is32Bit = !Environment.Is64BitOperatingSystem;
 
             var tor = new Tor(torDirectory, is32Bit);
 
-            // install updates if available
+            // Check for updates and install latest version.
             if (tor.CheckForUpdates().Result)
-                tor.InstallUpdates().Wait();
+                tor.Install().Wait();
 
-            var client = tor.InitializeClient();
+            // Disposing the client will exit the Tor process automatically.
+            using (var client = tor.InitializeClient())
+            {
+                var http = new WebClient
+                {
+                    // And now let's use Tor as a proxy.
+                    Proxy = client.Proxy.WebProxy
+                };
 
-            // wait for tor to fully initialize
-			Thread.Sleep(5 * 1000);
+                var html = http.DownloadString("http://facebookcorewwwi.onion");
+            }
 
-            while (!client.Proxy.IsRunning)
-                Thread.Sleep(100);
-
-            var wc = new WebClient();
-
-            // use the tor proxy !!
-            wc.Proxy = client.Proxy.WebProxy;
-
-            var html = wc.DownloadString("http://facebookcorewwwi.onion");
-
-            client.Dispose();
+            // Finally, you can remove all previously downloaded Tor files (optional).
+            tor.Uninstall();
         }
     }
 }
