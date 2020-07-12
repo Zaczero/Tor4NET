@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Diagnostics;
 using System.IO;
 using System.IO.Compression;
 using System.Net;
@@ -32,10 +33,7 @@ namespace Tor4NET
             };
 
             var httpClient = new HttpClient(httpHandler);
-            httpClient.DefaultRequestHeaders.UserAgent.ParseAdd("Tor4NET (+https://github.com/Zaczerp/Tor4NET)");
-            httpClient.DefaultRequestHeaders.Connection.Clear();
-            httpClient.DefaultRequestHeaders.ConnectionClose = false;
-            httpClient.DefaultRequestHeaders.Connection.Add("Keep-Alive");
+            httpClient.DefaultRequestHeaders.UserAgent.ParseAdd("Tor4NET (+https://github.com/Zaczero/Tor4NET)");
 
             torUpdater = new TorUpdater(httpClient, x86);
 
@@ -111,8 +109,11 @@ namespace Tor4NET
             if (currentVersion == string.Empty)
                 return true;
 
-            var latestVersion = await torUpdater.GetLatestVersion();
-            return currentVersion != latestVersion;
+            var (_, latestVersion) = await torUpdater.GetLatestVersion();
+            if (latestVersion == string.Empty)
+                return false;
+
+            return !currentVersion.Equals(latestVersion, StringComparison.Ordinal);
         }
 
         public async Task Install()
