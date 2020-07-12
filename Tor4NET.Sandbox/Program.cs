@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.IO;
 using System.Net;
 
@@ -31,6 +32,8 @@ namespace Tor4NET.Sandbox
                 };
 
                 var html = http.DownloadString("http://facebookcorewwwi.onion");
+
+                Debugger.Break();
             }
 
             // Finally, you can remove all previously downloaded Tor files (optional).
