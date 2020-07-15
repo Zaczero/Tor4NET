@@ -13,8 +13,10 @@ namespace Tor4NET.Sandbox
             // If the directory does not exist, it will create one.
             var torDirectory = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Tor4NET");
 
-            // Use 64-bit Tor on 64-bit system (optional).
-            var is32Bit = !Environment.Is64BitOperatingSystem;
+            // Use 64-bit Tor with 64-bit process.
+            // It's *very* important for the architecture of Tor process match the one used by your app.
+            // If no parameter is given Tor constructor will check Environment.Is64BitProcess property (the same one as below).
+            var is32Bit = !Environment.Is64BitProcess;
 
             var tor = new Tor(torDirectory, is32Bit);
 
@@ -32,7 +34,6 @@ namespace Tor4NET.Sandbox
                 };
 
                 var html = http.DownloadString("http://facebookcorewwwi.onion");
-
                 Debugger.Break();
             }
 

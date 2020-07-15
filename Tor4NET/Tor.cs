@@ -23,8 +23,11 @@ namespace Tor4NET
         private readonly int controlPort;
         private readonly string controlPassword;
 
-        public Tor(string torDirectory, bool x86 = true, int socksPort = 9450, int controlPort = 9451, string controlPassword = "")
+        public Tor(string torDirectory, bool? x86 = null, int socksPort = 9450, int controlPort = 9451, string controlPassword = "")
         {
+            if (!x86.HasValue)
+                x86 = !Environment.Is64BitProcess;
+
             var httpHandler = new HttpClientHandler
             {
                 AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate,
@@ -35,7 +38,7 @@ namespace Tor4NET
             var httpClient = new HttpClient(httpHandler);
             httpClient.DefaultRequestHeaders.UserAgent.ParseAdd("Tor4NET (+https://github.com/Zaczero/Tor4NET)");
 
-            torUpdater = new TorUpdater(httpClient, x86);
+            torUpdater = new TorUpdater(httpClient, x86.Value);
 
             this.torDirectory = torDirectory;
             torExecutable = $@"{this.torDirectory}\Tor\tor.exe";
