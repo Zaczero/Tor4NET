@@ -1,9 +1,9 @@
 # ![Zaczero/Tor4NET logo](https://github.com/Zaczero/Tor4NET/blob/master/icons/Tor4NET_small.png)
 
 [![Build Status](https://travis-ci.com/Zaczero/Tor4NET.svg?branch=master)](https://travis-ci.com/Zaczero/Tor4NET)
-![Github Release](https://img.shields.io/github/release/Zaczero/Tor4NET.svg)
-![NuGet Release](https://img.shields.io/nuget/v/Tor4NET.svg)
-![License](https://img.shields.io/github/license/Zaczero/Tor4NET.svg)
+[![GitHub Release](https://img.shields.io/github/v/release/Zaczero/Tor4NET)](https://github.com/Zaczero/Tor4NET/releases/latest)
+[![NuGet Release](https://img.shields.io/nuget/v/Tor4NET)](https://www.nuget.org/packages/Tor4NET/)
+[![License](https://img.shields.io/github/license/Zaczero/Tor4NET)](https://github.com/Zaczero/Tor4NET/blob/master/LICENSE)
 
 An all-in-one solution to fulfill your .NET dark web needs.
 
