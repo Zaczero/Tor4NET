@@ -1,8 +1,9 @@
 # ![Zaczero/Tor4NET logo](https://github.com/Zaczero/Tor4NET/blob/master/icons/Tor4NET_small.png)
 
-![github version](https://img.shields.io/github/release/Zaczero/Tor4NET.svg)
-![nuget version](https://img.shields.io/nuget/v/Tor4NET.svg)
-![license type](https://img.shields.io/github/license/Zaczero/Tor4NET.svg)
+[![Build Status](https://travis-ci.com/Zaczero/Tor4NET.svg?branch=master)](https://travis-ci.com/Zaczero/Tor4NET)
+![Github Release](https://img.shields.io/github/release/Zaczero/Tor4NET.svg)
+![NuGet Release](https://img.shields.io/nuget/v/Tor4NET.svg)
+![License](https://img.shields.io/github/license/Zaczero/Tor4NET.svg)
 
 An all-in-one solution to fulfill your .NET dark web needs.
 
@@ -14,6 +15,10 @@ This library is built over [Tor.NET](https://www.codeproject.com/Articles/107286
 ### Install with NuGet (recommended)
 
 `Install-Package Tor4NET`
+
+### Install with dotnet
+
+`dotnet add PROJECT package Tor4NET`
 
 ### Install manually
 
@@ -60,6 +65,7 @@ tor.Uninstall();
 ### 📧 Contact
 
 * Email: [kamil@monicz.pl](mailto:kamil@monicz.pl)
+* PGP: [0x9D7BC5B97BB0A707](https://gist.github.com/Zaczero/158da01bfd5b6d236f2b8ceb62dd9698)
 
 ### 📃 License
 
