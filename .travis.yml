@@ -1,0 +1,7 @@
+language: csharp
+solution: Tor4NET.sln
+mono: none
+dotnet: 2.1.809
+script:
+ - dotnet build -c Debug
+ - dotnet build -c Release
